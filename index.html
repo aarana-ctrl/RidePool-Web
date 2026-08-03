@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RidePool</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ── Auth Screen ───────────────────────────────────────────────────── -->
+<div id="screen-auth" class="screen active">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 54 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M10.8 0h32.4C48.8 0 54 5.2 54 11.6v23.2C54 41.2 48.8 46 43.2 46H10.8C5.2 46 0 41.2 0 34.8V11.6C0 5.2 5.2 0 10.8 0z
+               M12.4 29.5 C12.4 29.5 8 28 4 26 L4 34 C4 38 7 41 11 41 H43 C47 41 50 38 50 34 L50 26 C46 28 41.6 29.5 41.6 29.5z
+               M8 20 L8 26 C14 29 27 30 27 30 C27 30 40 29 46 26 L46 20 C46 14 37 9 27 9 C17 9 8 14 8 20z
+               M13 12 C13 12 24 5 40 10z"
+            fill="white"/>
+        </svg>
+      </div>
+    </div>
+    <h1 class="auth-title">RidePool</h1>
+    <p class="auth-subtitle">School carpooling, made simple.</p>
+
+    <!-- Tabs -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchAuthTab('signin')">Sign In</button>
+      <button class="auth-tab" onclick="switchAuthTab('signup')">Create Account</button>
+    </div>
+
+    <!-- Sign In Form -->
+    <form id="form-signin" class="auth-form" onsubmit="handleSignIn(event)">
+      <div class="field-group">
+        <label>School Email</label>
+        <input type="email" id="si-email" placeholder="you@school.edu" required />
+      </div>
+      <div class="field-group">
+        <label>Password</label>
+        <input type="password" id="si-password" placeholder="••••••••" required />
+      </div>
+      <button type="submit" class="btn-primary" id="btn-signin">Sign In</button>
+    </form>
+
+    <!-- Sign Up Form -->
+    <form id="form-signup" class="auth-form hidden" onsubmit="handleSignUp(event)">
+      <div class="field-group">
+        <label>Full Name</label>
+        <input type="text" id="su-name" placeholder="Your Name" required />
+      </div>
+      <div class="field-group">
+        <label>School Email</label>
+        <input type="email" id="su-email" placeholder="you@school.edu" required />
+      </div>
+      <div class="field-group">
+        <label>Password</label>
+        <input type="password" id="su-password" placeholder="At least 6 characters" required />
+      </div>
+      <div class="field-group">
+        <label>School</label>
+        <input type="text" id="su-school" placeholder="Redmond High School" required />
+      </div>
+      <div class="field-group">
+        <label>Year</label>
+        <select id="su-year" required>
+          <option value="">Select your year</option>
+          <option>Freshman</option><option>Sophomore</option>
+          <option>Junior</option><option>Senior</option>
+          <option>Graduate Student</option><option>Faculty / Staff</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label>Role</label>
+        <div class="role-picker" id="role-picker">
+          <button type="button" class="role-btn active" data-role="student" onclick="selectRole(this)">
+            <span class="role-icon">🎓</span>
+            <div>
+              <div class="role-name">Student</div>
+              <div class="role-sub">Attend events and request rides</div>
+            </div>
+          </button>
+          <button type="button" class="role-btn" data-role="staff" onclick="selectRole(this)">
+            <span class="role-icon">🔑</span>
+            <div>
+              <div class="role-name">Staff / Faculty</div>
+              <div class="role-sub">Post events and oversee the platform</div>
+            </div>
+          </button>
+          <button type="button" class="role-btn" data-role="studentRep" onclick="selectRole(this)">
+            <span class="role-icon">⭐</span>
+            <div>
+              <div class="role-name">Student Rep / Club Organizer</div>
+              <div class="role-sub">Post events on behalf of your club</div>
+            </div>
+          </button>
+        </div>
+      </div>
+      <button type="submit" class="btn-primary" id="btn-signup">Create Account</button>
+    </form>
+
+    <!-- Divider -->
+    <div class="auth-divider"><span>or</span></div>
+
+    <!-- Google Sign In -->
+    <button class="btn-google" onclick="handleGoogleSignIn()">
+      <svg width="18" height="18" viewBox="0 0 18 18"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z" fill="#34A853"/><path d="M3.964 10.707A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.707V4.961H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.039l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.961L3.964 6.293C4.672 4.166 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+      Continue with Google
+    </button>
+
+    <div id="auth-error" class="auth-error hidden"></div>
+  </div>
+</div>
+
+<!-- ── Onboarding Screen ───────────────────────────────────────────────── -->
+<div id="screen-onboarding" class="screen hidden">
+  <div class="auth-card">
+    <h1 class="auth-title" style="margin-top:24px">Almost there!</h1>
+    <p class="auth-subtitle">Tell us about yourself to complete your profile.</p>
+    <form class="auth-form" onsubmit="handleOnboarding(event)">
+      <div class="field-group">
+        <label>School</label>
+        <input type="text" id="ob-school" placeholder="Redmond High School" required />
+      </div>
+      <div class="field-group">
+        <label>Year</label>
+        <select id="ob-year" required>
+          <option value="">Select your year</option>
+          <option>Freshman</option><option>Sophomore</option>
+          <option>Junior</option><option>Senior</option>
+          <option>Graduate Student</option><option>Faculty / Staff</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label>Role</label>
+        <div class="role-picker" id="ob-role-picker">
+          <button type="button" class="role-btn active" data-role="student" onclick="selectObRole(this)">
+            <span class="role-icon">🎓</span>
+            <div><div class="role-name">Student</div><div class="role-sub">Attend events and request rides</div></div>
+          </button>
+          <button type="button" class="role-btn" data-role="staff" onclick="selectObRole(this)">
+            <span class="role-icon">🔑</span>
+            <div><div class="role-name">Staff / Faculty</div><div class="role-sub">Post events and oversee the platform</div></div>
+          </button>
+          <button type="button" class="role-btn" data-role="studentRep" onclick="selectObRole(this)">
+            <span class="role-icon">⭐</span>
+            <div><div class="role-name">Student Rep / Club Organizer</div><div class="role-sub">Post events on behalf of your club</div></div>
+          </button>
+        </div>
+      </div>
+      <button type="submit" class="btn-primary">Get Started</button>
+    </form>
+  </div>
+</div>
+
+<!-- ── Main App ───────────────────────────────────────────────────────── -->
+<div id="screen-app" class="screen hidden">
+
+  <!-- Sidebar (desktop) -->
+  <aside id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-mark">RP</div>
+      <span>RidePool</span>
+    </div>
+    <nav class="sidebar-nav">
+      <button class="nav-item active" data-view="home" onclick="navigate('home')">
+        <span class="nav-icon">🏠</span> Home
+      </button>
+      <button class="nav-item" data-view="rides" onclick="navigate('rides')">
+        <span class="nav-icon">🚗</span> My Rides
+      </button>
+      <button class="nav-item" data-view="notifications" onclick="navigate('notifications')">
+        <span class="nav-icon">🔔</span> Notifications
+        <span id="notif-badge" class="badge hidden">0</span>
+      </button>
+      <button class="nav-item" data-view="shop" onclick="navigate('shop')">
+        <span class="nav-icon">🛍</span> Shop
+      </button>
+      <button class="nav-item" data-view="profile" onclick="navigate('profile')">
+        <span class="nav-icon">👤</span> Profile
+      </button>
+    </nav>
+  </aside>
+
+  <!-- Content -->
+  <main id="content">
+    <div id="view-home" class="view active"></div>
+    <div id="view-event" class="view hidden"></div>
+    <div id="view-create" class="view hidden"></div>
+    <div id="view-rides" class="view hidden"></div>
+    <div id="view-notifications" class="view hidden"></div>
+    <div id="view-shop" class="view hidden"></div>
+    <div id="view-profile" class="view hidden"></div>
+  </main>
+
+  <!-- Bottom nav (mobile) -->
+  <nav id="bottom-nav">
+    <button class="bnav-item active" data-view="home" onclick="navigate('home')">
+      <span>🏠</span><span>Home</span>
+    </button>
+    <button class="bnav-item" data-view="rides" onclick="navigate('rides')">
+      <span>🚗</span><span>Rides</span>
+    </button>
+    <button class="bnav-item" data-view="notifications" onclick="navigate('notifications')">
+      <span>🔔</span><span>Alerts</span>
+      <span id="bnav-badge" class="bnav-badge hidden">0</span>
+    </button>
+    <button class="bnav-item" data-view="shop" onclick="navigate('shop')">
+      <span>🛍</span><span>Shop</span>
+    </button>
+    <button class="bnav-item" data-view="profile" onclick="navigate('profile')">
+      <span>👤</span><span>Profile</span>
+    </button>
+  </nav>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast hidden"></div>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
