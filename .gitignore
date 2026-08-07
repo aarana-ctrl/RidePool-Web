@@ -1,0 +1,20 @@
+# Only web files belong in this repo.
+# Everything else is ignored.
+
+# iOS / Swift
+*.swift
+*.xcodeproj/
+*.xcworkspace/
+*.pbxproj
+DerivedData/
+.derived-data-log-*
+Pods/
+*.resolved
+
+# macOS
+.DS_Store
+._*
+
+# Secrets (never commit real config)
+# app.js is committed but keep this reminder:
+# Fill in FIREBASE_CONFIG values — don't commit real keys to a public repo.
