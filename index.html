@@ -13,13 +13,38 @@
   <div class="auth-card">
     <div class="auth-logo">
       <div class="logo-mark">
-        <svg viewBox="0 0 54 47" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" clip-rule="evenodd"
-            d="M10.8 0h32.4C48.8 0 54 5.2 54 11.6v23.2C54 41.2 48.8 46 43.2 46H10.8C5.2 46 0 41.2 0 34.8V11.6C0 5.2 5.2 0 10.8 0z
-               M12.4 29.5 C12.4 29.5 8 28 4 26 L4 34 C4 38 7 41 11 41 H43 C47 41 50 38 50 34 L50 26 C46 28 41.6 29.5 41.6 29.5z
-               M8 20 L8 26 C14 29 27 30 27 30 C27 30 40 29 46 26 L46 20 C46 14 37 9 27 9 C17 9 8 14 8 20z
-               M13 12 C13 12 24 5 40 10z"
-            fill="white"/>
+        <!-- Car silhouette — even-odd fill punches windshield + headlights through the body.
+             Paths mirror the iOS CarSilhouette SwiftUI shape exactly. -->
+        <svg viewBox="0 0 80 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" fill="white" d="
+            M 16 0 L 64 0
+            C 75.2 0 80 14 80 30.1
+            L 80 56
+            C 80 65.1 76 70 68.8 70
+            L 49.6 70
+            C 44.8 63.7 35.2 63.7 30.4 70
+            L 11.2 70
+            C 4 70 0 65.1 0 56
+            L 0 30.1
+            C 0 14 4.8 0 16 0 Z
+
+            M 26.4 2.1 L 53.6 2.1
+            C 57.6 2.1 61.6 6.1 61.6 10.1
+            L 61.6 18.6
+            C 61.6 22.6 57.6 26.6 53.6 26.6
+            L 26.4 26.6
+            C 22.4 26.6 18.4 22.6 18.4 18.6
+            L 18.4 10.1
+            C 18.4 6.1 22.4 2.1 26.4 2.1 Z
+
+            M 3.36 39.2
+            C 7.41 32.2 18.45 34.44 21.76 39.2
+            C 18.45 43.96 7.41 46.2 3.36 39.2 Z
+
+            M 76.64 39.2
+            C 72.59 32.2 61.55 34.44 58.24 39.2
+            C 61.55 43.96 72.59 46.2 76.64 39.2 Z
+          "/>
         </svg>
       </div>
     </div>
@@ -161,7 +186,20 @@
   <!-- Sidebar (desktop) -->
   <aside id="sidebar">
     <div class="sidebar-logo">
-      <div class="sidebar-mark">RP</div>
+      <div class="sidebar-mark">
+        <svg viewBox="0 0 80 70" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:22px;height:19px">
+          <path fill-rule="evenodd" clip-rule="evenodd" fill="white" d="
+            M 16 0 L 64 0 C 75.2 0 80 14 80 30.1 L 80 56 C 80 65.1 76 70 68.8 70
+            L 49.6 70 C 44.8 63.7 35.2 63.7 30.4 70 L 11.2 70 C 4 70 0 65.1 0 56
+            L 0 30.1 C 0 14 4.8 0 16 0 Z
+            M 26.4 2.1 L 53.6 2.1 C 57.6 2.1 61.6 6.1 61.6 10.1 L 61.6 18.6
+            C 61.6 22.6 57.6 26.6 53.6 26.6 L 26.4 26.6 C 22.4 26.6 18.4 22.6 18.4 18.6
+            L 18.4 10.1 C 18.4 6.1 22.4 2.1 26.4 2.1 Z
+            M 3.36 39.2 C 7.41 32.2 18.45 34.44 21.76 39.2 C 18.45 43.96 7.41 46.2 3.36 39.2 Z
+            M 76.64 39.2 C 72.59 32.2 61.55 34.44 58.24 39.2 C 61.55 43.96 72.59 46.2 76.64 39.2 Z
+          "/>
+        </svg>
+      </div>
       <span>RidePool</span>
     </div>
     <nav class="sidebar-nav">
