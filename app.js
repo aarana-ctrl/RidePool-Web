@@ -8,9 +8,19 @@
 //    then `firebase deploy`.
 // ─────────────────────────────────────────────────────────────────────────
 
-// Firebase is initialized by /__/firebase/init.js (Firebase Hosting reserved URL).
-// API keys are never committed to source — they are injected at deploy time.
-// Local dev: run `firebase serve` so the /__/firebase/ URLs resolve correctly.
+// Initialize Firebase (guard prevents double-init on Firebase Hosting
+// where /__/firebase/init.js may have already run).
+if (!firebase.apps.length) {
+  firebase.initializeApp({
+    apiKey:            "AIzaSyAR3zqKvaUiFfKkn8FoXsVnUa901V-hdz8",
+    authDomain:        "project-ridepool.firebaseapp.com",
+    projectId:         "project-ridepool",
+    storageBucket:     "project-ridepool.firebasestorage.app",
+    messagingSenderId: "42076561004",
+    appId:             "1:42076561004:web:004bf8aae07503f56cc249",
+    measurementId:     "G-NG8F4DD9ND",
+  });
+}
 const auth = firebase.auth();
 const db   = firebase.firestore();
 
