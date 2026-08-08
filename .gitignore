@@ -15,6 +15,5 @@ Pods/
 .DS_Store
 ._*
 
-# Secrets (never commit real config)
-# app.js is committed but keep this reminder:
-# Fill in FIREBASE_CONFIG values — don't commit real keys to a public repo.
+# Local dev Firebase config — contains real API key, never commit
+firebase-config.js
