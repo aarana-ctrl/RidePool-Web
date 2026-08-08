@@ -8,38 +8,9 @@
 //    then `firebase deploy`.
 // ─────────────────────────────────────────────────────────────────────────
 
-// ── HOW TO GET YOUR CONFIG ────────────────────────────────────────────────
-// Firebase Console → Project Settings (gear icon) → scroll down to
-// "Your apps" → click your Web App (or "Add app" → Web if none exists)
-// → copy the firebaseConfig values into the object below.
-// ─────────────────────────────────────────────────────────────────────────
-const FIREBASE_CONFIG = {
-  apiKey:            "AIzaSyAR3zqKvaUiFfKkn8FoXsVnUa901V-hdz8",
-  authDomain:        "project-ridepool.firebaseapp.com",
-  projectId:         "project-ridepool",
-  storageBucket:     "project-ridepool.firebasestorage.app",
-  messagingSenderId: "42076561004",
-  appId:             "1:42076561004:web:004bf8aae07503f56cc249",
-  measurementId:     "G-NG8F4DD9ND",
-};
-
-// Guard — shows a friendly setup message instead of a cryptic API-key error
-if (!FIREBASE_CONFIG.apiKey) {
-  document.body.innerHTML = `
-    <div style="font-family:system-ui;max-width:480px;margin:80px auto;padding:32px;
-                background:#fff;border-radius:20px;box-shadow:0 4px 24px rgba(0,0,0,.08)">
-      <div style="font-size:36px;margin-bottom:16px">🔧</div>
-      <h2 style="margin-bottom:8px">Firebase setup needed</h2>
-      <p style="color:#6B6B7A;font-size:14px;line-height:1.6">
-        Open <code>app.js</code> and fill in your Firebase project credentials.<br><br>
-        <strong>Where to find them:</strong><br>
-        Firebase Console → Project Settings → Your Apps → Web App → firebaseConfig
-      </p>
-    </div>`;
-  throw new Error('Firebase config missing — fill in app.js');
-}
-
-firebase.initializeApp(FIREBASE_CONFIG);
+// Firebase is initialized by /__/firebase/init.js (Firebase Hosting reserved URL).
+// API keys are never committed to source — they are injected at deploy time.
+// Local dev: run `firebase serve` so the /__/firebase/ URLs resolve correctly.
 const auth = firebase.auth();
 const db   = firebase.firestore();
 
