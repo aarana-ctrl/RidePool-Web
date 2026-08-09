@@ -68,8 +68,7 @@ function isSchoolEmail(email) {
 auth.onAuthStateChanged(async (user) => {
   if (user) {
     state.user = user;
-    const doc = await db.collection('users').document(user.uid).get().catch(() => null)
-              || await db.collection('users').doc(user.uid).get().catch(() => null);
+    const doc = await db.collection('users').doc(user.uid).get().catch(() => null);
     if (doc && doc.exists) {
       state.profile = { uid: user.uid, ...doc.data() };
       if (!state.profile.school || !state.profile.year) {
